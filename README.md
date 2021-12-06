@@ -6,8 +6,8 @@
  
 
 <div align="left" >
-<img src="https://github.com/enChenging/ViewBlock/blob/master/img/Xfermode1.png" width="300">
+<img src="https://github.com/enChenging/ViewBlock/blob/master/img/Xfermode1.png" width="500">
 </div>  
 <div align="left" >
-<img src="https://github.com/enChenging/ViewBlock/blob/master/img/Xfermode2.png" width="300">
+<img src="https://github.com/enChenging/ViewBlock/blob/master/img/Xfermode2.png" width="500">
 </div>  
