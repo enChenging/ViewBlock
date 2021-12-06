@@ -15,22 +15,20 @@ import kotlin.math.sin
  * @author yancheng
  * @since 2021/12/6
  */
-
+private val RADIUS = 150f.dp2pxF
+private val ANGLES = floatArrayOf(60f, 90f, 150f, 60f)
+private val COLORS = listOf(
+    Color.parseColor("#C2185B"),
+    Color.parseColor("#00ACC1"),
+    Color.parseColor("#558B2F"),
+    Color.parseColor("#5D4037")
+)
+private val OFFSET_LENGTH = 30f
 class PieChart(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
 
-    val RADIUS = 150f.dp2pxF
-    val ANGLES = floatArrayOf(60f, 90f, 150f, 60f)
-    val COLORS = listOf(
-        Color.parseColor("#C2185B"),
-        Color.parseColor("#00ACC1"),
-        Color.parseColor("#558B2F"),
-        Color.parseColor("#5D4037")
-    )
-    val OFFSET_LENGTH = 30f
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
-
     }
 
     override fun onDraw(canvas: Canvas) {

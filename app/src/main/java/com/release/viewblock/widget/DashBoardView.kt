@@ -13,15 +13,13 @@ import kotlin.math.sin
  * @author yancheng
  * @since 2021/12/6
  */
-
+private val OPEN_ANGLE = 120f
+private val MARK = 10
+private val RADIUS = 150f.dp2pxF
+private val LENGTH = 120f.dp2pxF
+private val DASH_WIDTH = 2f.dp2pxF
+private val DASH_LENGTH = 10f.dp2pxF
 class DashBoardView(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
-    val OPEN_ANGLE = 120f
-    val MARK = 10
-    val RADIUS = 150f.dp2pxF
-    val LENGTH = 120f.dp2pxF
-    val DASH_WIDTH = 2f.dp2pxF
-    val DASH_LENGTH = 10f.dp2pxF
-
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
 
     //仪表刻度
