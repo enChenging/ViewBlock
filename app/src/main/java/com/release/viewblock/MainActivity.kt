@@ -13,5 +13,7 @@ class MainActivity : AppCompatActivity() {
 
     fun onDashBoardView(view: View) = startActivity<DashBoardActivity>()
     fun onPieChart(view: View) = startActivity<PieChartActivity>()
+    fun onAvatar(view: View) = startActivity<AvatarActivity>()
+    fun onXfermode(view: View) = startActivity<XfermodeActivity>()
 
 }
