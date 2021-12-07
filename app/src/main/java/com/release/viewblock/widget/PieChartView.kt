@@ -24,12 +24,9 @@ private val COLORS = listOf(
     Color.parseColor("#5D4037")
 )
 private val OFFSET_LENGTH = 30f
-class PieChart(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
+class PieChartView(context: Context) : View(context) {
 
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
-
-    override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
-    }
 
     override fun onDraw(canvas: Canvas) {
         //画弧

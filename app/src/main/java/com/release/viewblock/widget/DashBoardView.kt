@@ -19,7 +19,7 @@ private val RADIUS = 150f.dp2pxF
 private val LENGTH = 120f.dp2pxF
 private val DASH_WIDTH = 2f.dp2pxF
 private val DASH_LENGTH = 10f.dp2pxF
-class DashBoardView(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
+class DashBoardView(context: Context?) : View(context) {
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
 
     //仪表刻度
@@ -34,7 +34,6 @@ class DashBoardView(context: Context?, attrs: AttributeSet?) : View(context, att
         //CCW逆时针  CW顺时针
         dash.addRect(0f, 0f, DASH_WIDTH, DASH_LENGTH, Path.Direction.CCW)
     }
-
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         path.reset()

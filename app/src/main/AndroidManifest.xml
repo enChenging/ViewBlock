@@ -21,7 +21,7 @@
 
         <activity android:name=".DashBoardActivity"/>
         <activity android:name=".PieChartActivity"/>
-        <activity android:name=".AvatarActivity"/>
+        <activity android:name=".ShowWidgetViewActivity"/>
         <activity android:name=".XfermodeActivity"/>
     </application>
 

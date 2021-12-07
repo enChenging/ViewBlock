@@ -7,8 +7,7 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/vDashBoardView"
-        android:onClick="onDashBoardView"
+        android:id="@+id/vDashBoard"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
@@ -24,7 +23,6 @@
 
     <TextView
         android:id="@+id/vPieChart"
-        android:onClick="onPieChart"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
@@ -35,12 +33,11 @@
         app:layout_constraintHeight_percent="0.05"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/vDashBoardView"
+        app:layout_constraintTop_toBottomOf="@id/vDashBoard"
         app:layout_constraintWidth_percent="0.8" />
 
     <TextView
         android:id="@+id/vAvatar"
-        android:onClick="onAvatar"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
@@ -56,7 +53,6 @@
 
     <TextView
         android:id="@+id/vXfermode"
-        android:onClick="onXfermode"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
@@ -68,6 +64,36 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/vAvatar"
+        app:layout_constraintWidth_percent="0.8" />
+
+    <TextView
+        android:id="@+id/vSport"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rect_20dp"
+        android:gravity="center"
+        android:text="运动圆环"
+        android:textColor="@color/white"
+        app:layout_constraintHeight_percent="0.05"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/vXfermode"
+        app:layout_constraintWidth_percent="0.8" />
+
+    <TextView
+        android:id="@+id/vMultiline"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rect_20dp"
+        android:gravity="center"
+        android:text="多行文字"
+        android:textColor="@color/white"
+        app:layout_constraintHeight_percent="0.05"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/vSport"
         app:layout_constraintWidth_percent="0.8" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,7 +17,7 @@ import com.release.viewblock.ktx.dp2pxF
 
 private val XFERMODE = PorterDuffXfermode(PorterDuff.Mode.DST_OVER)
 
-class XfermodeView(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
+class XfermodeView(context: Context?) : View(context) {
 
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val bounds = RectF(150f.dp2pxF, 50f.dp2pxF, 300f.dp2pxF, 200f.dp2pxF)

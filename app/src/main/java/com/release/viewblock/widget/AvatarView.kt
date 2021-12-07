@@ -19,16 +19,11 @@ import com.release.viewblock.ktx.dp2pxF
 private val IMAGE_WIDTH = 200f.dp2px
 private val IMAGE_PADDING = 20f.dp2pxF
 private val XFERMODE = PorterDuffXfermode(PorterDuff.Mode.SRC_IN)
-
-class AvatarView(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
-
+class AvatarView(context: Context) : View(context){
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val bounds = RectF(
         IMAGE_PADDING, IMAGE_PADDING, IMAGE_PADDING + IMAGE_WIDTH,
         IMAGE_PADDING + IMAGE_WIDTH)
-
-    override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
-    }
 
     override fun onDraw(canvas: Canvas) {
         //离屏缓冲
