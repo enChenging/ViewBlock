@@ -10,7 +10,8 @@ import com.release.viewblock.R
 import com.release.viewblock.ktx.dp2pxF
 
 /**
- *
+ * 多行文字
+ * 文字测量
  * @author yancheng
  * @since 2021/12/7
  */

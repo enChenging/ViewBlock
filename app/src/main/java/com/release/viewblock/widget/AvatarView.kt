@@ -10,6 +10,7 @@ import com.release.viewblock.ktx.dp2pxF
 
 /**
  * 头像
+ * Xfermode使用解析
  * PorterDuff.Mode官方介绍地址
  * https://developer.android.com/reference/android/graphics/PorterDuff.Mode
  * @author yancheng

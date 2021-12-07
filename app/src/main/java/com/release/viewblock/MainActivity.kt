@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         vXfermode.setOnClickListener(this)
         vSport.setOnClickListener(this)
         vMultiline.setOnClickListener(this)
+        vCamera.setOnClickListener(this)
     }
 
     override fun onClick(view: View) {
@@ -34,6 +35,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity<ShowWidgetViewActivity>(Pair(Constants.KEY, Constants.SPORT))
             R.id.vMultiline ->
                 startActivity<ShowWidgetViewActivity>(Pair(Constants.KEY, Constants.MULTILINE))
+            R.id.vCamera ->
+                startActivity<ShowWidgetViewActivity>(Pair(Constants.KEY, Constants.CAMERA))
         }
     }
 

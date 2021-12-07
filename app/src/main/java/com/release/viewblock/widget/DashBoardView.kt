@@ -10,6 +10,7 @@ import kotlin.math.sin
 
 /**
  * 仪表盘
+ * 图形的位置和尺寸测量
  * @author yancheng
  * @since 2021/12/6
  */

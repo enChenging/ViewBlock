@@ -35,6 +35,8 @@ class ShowWidgetViewActivity : AppCompatActivity() {
                 container.addView(SportView(this))
             Constants.MULTILINE ->
                 container.addView(MultilineTextView(this))
+            Constants.CAMERA ->
+                container.addView(CameraView(this))
         }
     }
 }
