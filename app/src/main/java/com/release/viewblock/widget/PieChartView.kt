@@ -25,7 +25,7 @@ private val COLORS = listOf(
     Color.parseColor("#5D4037")
 )
 private val OFFSET_LENGTH = 30f
-class PieChartView(context: Context,attributeSet: AttributeSet?) : View(context,attributeSet) {
+class PieChartView(context: Context,attrs: AttributeSet?) : View(context,attrs) {
     constructor(context: Context) : this(context, null)
 
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)

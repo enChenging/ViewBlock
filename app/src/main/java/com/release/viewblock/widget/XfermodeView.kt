@@ -17,7 +17,7 @@ import com.release.viewblock.ktx.dp2pxF
 
 private val XFERMODE = PorterDuffXfermode(PorterDuff.Mode.DST_OVER)
 
-class XfermodeView(context: Context, attributeSet: AttributeSet?) : View(context, attributeSet) {
+class XfermodeView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
     constructor(context: Context) : this(context, null)
 
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)

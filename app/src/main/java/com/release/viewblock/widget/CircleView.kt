@@ -14,7 +14,7 @@ import java.util.jar.Attributes
  * @author yancheng
  * @since 2021/12/8
  */
-class CircleView(context: Context,attributes: AttributeSet?) : View(context,attributes) {
+class CircleView(context: Context,attrs: AttributeSet?) : View(context,attrs) {
     constructor(context: Context) : this(context, null)
 
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)

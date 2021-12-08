@@ -20,7 +20,7 @@ private val HIGHLIGHT_COLOR = Color.parseColor("#FF8041")
 private val RING_WIDTH = 20.dp2pxF
 private val RADIUS = 150.dp2pxF
 
-class SportView(context: Context,attributeSet: AttributeSet?) : View(context,attributeSet) {
+class SportView(context: Context,attrs: AttributeSet?) : View(context,attrs) {
     constructor(context: Context) : this(context, null)
 
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {

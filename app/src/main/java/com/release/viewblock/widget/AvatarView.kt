@@ -21,8 +21,8 @@ private val IMAGE_WIDTH = 200f.dp2px
 private val IMAGE_PADDING = 20f.dp2pxF
 private val XFERMODE = PorterDuffXfermode(PorterDuff.Mode.SRC_IN)
 
-class AvatarView(context: Context, attributeSet: AttributeSet?) :
-    View(context, attributeSet) {
+class AvatarView(context: Context, attrs: AttributeSet?) :
+    View(context, attrs) {
     constructor(context: Context) : this(context,null)
 
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)

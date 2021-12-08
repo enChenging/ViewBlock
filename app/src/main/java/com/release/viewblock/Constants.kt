@@ -15,4 +15,6 @@ object Constants {
     const val MULTILINE = "Multiline"
     const val CAMERA = "Camera"
     const val ANIMATOR = "Animator"
+    const val DRAWABLE = "Drawable"
+    const val MATERIAL_EDIT_TEXT = "MaterialEditText"
 }

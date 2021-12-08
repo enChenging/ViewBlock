@@ -21,15 +21,15 @@ class AnimatorActivity : AppCompatActivity() {
         setContentView(R.layout.activity_animator)
 
         //ViewPropertyAnimator 使用
-        vCircleView.animate()
-            .translationX(100.dp2pxF)
-            .translationY(100.dp2pxF)
-            .alpha(0.5f)
-            .scaleX(1.5f)
-            .scaleY(1.5f)
-            .rotation(90f)
-            .withLayer()
-            .startDelay = 1000
+//        vCircleView.animate()
+//            .translationX(100.dp2pxF)
+//            .translationY(100.dp2pxF)
+//            .alpha(0.5f)
+//            .scaleX(1.5f)
+//            .scaleY(1.5f)
+//            .rotation(90f)
+//            .withLayer()
+//            .startDelay = 1000
 
 
         //ObjectAnimator 使用
@@ -82,15 +82,15 @@ class AnimatorActivity : AppCompatActivity() {
 //        animator.duration = 2000
 //        animator.start()
 
-//        val animator = ObjectAnimator.ofObject(
-//            vProvinceView,
-//            "province",
-//            ProvinceEvaluator(),
-//            "阿勒泰市"
-//        )
-//        animator.startDelay = 1000
-//        animator.duration = 2000
-//        animator.start()
+        val animator = ObjectAnimator.ofObject(
+            vProvinceView,
+            "province",
+            ProvinceEvaluator(),
+            "阿勒泰市"
+        )
+        animator.startDelay = 1000
+        animator.duration = 2000
+        animator.start()
     }
 
     class PointFEvaluator : TypeEvaluator<PointF> {

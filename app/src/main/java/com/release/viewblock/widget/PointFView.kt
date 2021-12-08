@@ -13,7 +13,7 @@ import com.release.viewblock.ktx.dp2pxF
  * @author yancheng
  * @since 2021/12/8
  */
-class PointFView(context: Context, attributeSet: AttributeSet?) : View(context, attributeSet) {
+class PointFView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
     constructor(context: Context) : this(context, null)
 
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)

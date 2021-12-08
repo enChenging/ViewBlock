@@ -5,7 +5,11 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.release.viewblock.ktx.startActivity
 import kotlinx.android.synthetic.main.activity_main.*
-
+/**
+ * 自定义View
+ * @author yancheng
+ * @since 2021/12/6
+ */
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,6 +24,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         vMultiline.setOnClickListener(this)
         vCamera.setOnClickListener(this)
         vAnimator.setOnClickListener(this)
+        vDrawable.setOnClickListener(this)
+        vMaterialEditText.setOnClickListener(this)
     }
 
     override fun onClick(view: View) {
@@ -40,6 +46,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 jumpAct(Constants.CAMERA)
             R.id.vAnimator ->
                 startActivity<AnimatorActivity>()
+            R.id.vDrawable ->
+                jumpAct(Constants.DRAWABLE)
+            R.id.vMaterialEditText ->
+                jumpAct(Constants.MATERIAL_EDIT_TEXT)
         }
     }
 

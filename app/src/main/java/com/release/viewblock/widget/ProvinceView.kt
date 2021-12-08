@@ -39,7 +39,7 @@ private val provinces = listOf(
     "阿勒泰市"
 )
 
-class ProvinceView(context: Context, attributeSet: AttributeSet?) : View(context, attributeSet) {
+class ProvinceView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
     constructor(context: Context) : this(context, null)
 
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
@@ -51,6 +51,11 @@ class ProvinceView(context: Context, attributeSet: AttributeSet?) : View(context
             field = value
             invalidate()
         }
+
+    init {
+        //开启离屏缓冲,使用硬件绘制
+        setLayerType(LAYER_TYPE_HARDWARE,null)
+    }
 
     override fun onDraw(canvas: Canvas) {
         canvas.drawText(province, width / 2f, height / 2f, paint)

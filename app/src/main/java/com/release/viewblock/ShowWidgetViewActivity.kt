@@ -1,7 +1,9 @@
 package com.release.viewblock
 
 import android.os.Bundle
+import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.release.viewblock.widget.*
 import kotlinx.android.synthetic.main.activity_show_widget_view.*
 
@@ -11,6 +13,15 @@ import kotlinx.android.synthetic.main.activity_show_widget_view.*
  * @since 2021/12/6
  */
 class ShowWidgetViewActivity : AppCompatActivity() {
+
+    private val materialEditText by lazy {
+        MaterialEditText(this).apply {
+            layoutParams = ConstraintLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +48,11 @@ class ShowWidgetViewActivity : AppCompatActivity() {
                 container.addView(MultilineTextView(this))
             Constants.CAMERA ->
                 container.addView(CameraView(this))
+            Constants.DRAWABLE ->
+                container.addView(DrawableView(this))
+            Constants.MATERIAL_EDIT_TEXT -> {
+                container.addView(materialEditText)
+            }
         }
     }
 }

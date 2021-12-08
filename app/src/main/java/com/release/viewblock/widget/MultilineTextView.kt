@@ -19,7 +19,7 @@ import com.release.viewblock.ktx.dp2pxF
 private val IMAGE_PADDING = 50.dp2pxF
 private val IMAGE_SIZE = 150f.dp2pxF
 
-class MultilineTextView(context: Context,attributeSet: AttributeSet?) : View(context,attributeSet) {
+class MultilineTextView(context: Context,attrs: AttributeSet?) : View(context,attrs) {
     constructor(context: Context) : this(context, null)
 
     val text =

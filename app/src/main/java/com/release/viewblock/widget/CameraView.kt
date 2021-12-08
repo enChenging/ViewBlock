@@ -16,8 +16,8 @@ import com.release.viewblock.ktx.dp2pxF
 private val BITMAP_SIZE = 200.dp2pxF
 private val BITMAP_PADDING = 100.dp2pxF
 
-class CameraView(context: Context, attributeSet: AttributeSet?) :
-    View(context, attributeSet) {
+class CameraView(context: Context, attrs: AttributeSet?) :
+    View(context, attrs) {
     constructor(context: Context) : this(context, null)
 
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
