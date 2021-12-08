@@ -19,25 +19,31 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         vSport.setOnClickListener(this)
         vMultiline.setOnClickListener(this)
         vCamera.setOnClickListener(this)
+        vAnimator.setOnClickListener(this)
     }
 
     override fun onClick(view: View) {
         when (view.id) {
             R.id.vDashBoard ->
-                startActivity<ShowWidgetViewActivity>(Pair(Constants.KEY, Constants.DASH_BOARD))
+                jumpAct(Constants.DASH_BOARD)
             R.id.vPieChart ->
-                startActivity<ShowWidgetViewActivity>(Pair(Constants.KEY, Constants.PIE_CHART))
+                jumpAct(Constants.PIE_CHART)
             R.id.vAvatar ->
-                startActivity<ShowWidgetViewActivity>(Pair(Constants.KEY, Constants.AVATAR))
+                jumpAct(Constants.AVATAR)
             R.id.vXfermode ->
-                startActivity<ShowWidgetViewActivity>(Pair(Constants.KEY, Constants.XFERMODE))
+                jumpAct(Constants.XFERMODE)
             R.id.vSport ->
-                startActivity<ShowWidgetViewActivity>(Pair(Constants.KEY, Constants.SPORT))
+                jumpAct(Constants.SPORT)
             R.id.vMultiline ->
-                startActivity<ShowWidgetViewActivity>(Pair(Constants.KEY, Constants.MULTILINE))
+                jumpAct(Constants.MULTILINE)
             R.id.vCamera ->
-                startActivity<ShowWidgetViewActivity>(Pair(Constants.KEY, Constants.CAMERA))
+                jumpAct(Constants.CAMERA)
+            R.id.vAnimator ->
+                startActivity<AnimatorActivity>()
         }
     }
 
+    private fun jumpAct(value: String) {
+        startActivity<ShowWidgetViewActivity>(Pair(Constants.KEY, value))
+    }
 }

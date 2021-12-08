@@ -20,9 +20,10 @@ private val RADIUS = 150f.dp2pxF
 private val LENGTH = 120f.dp2pxF
 private val DASH_WIDTH = 2f.dp2pxF
 private val DASH_LENGTH = 10f.dp2pxF
-class DashBoardView(context: Context?) : View(context) {
-    private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
+class DashBoardView(context: Context,attributes: AttributeSet?) : View(context,attributes) {
+    constructor(context: Context) : this(context, null)
 
+    private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
     //仪表刻度
     private val dash = Path()
     private val path = Path()

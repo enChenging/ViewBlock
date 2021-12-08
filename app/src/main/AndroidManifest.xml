@@ -19,10 +19,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".DashBoardActivity"/>
-        <activity android:name=".PieChartActivity"/>
         <activity android:name=".ShowWidgetViewActivity"/>
-        <activity android:name=".XfermodeActivity"/>
+        <activity android:name=".AnimatorActivity"/>
     </application>
 
 </manifest>

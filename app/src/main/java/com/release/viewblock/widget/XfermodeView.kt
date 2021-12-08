@@ -17,7 +17,8 @@ import com.release.viewblock.ktx.dp2pxF
 
 private val XFERMODE = PorterDuffXfermode(PorterDuff.Mode.DST_OVER)
 
-class XfermodeView(context: Context?) : View(context) {
+class XfermodeView(context: Context, attributeSet: AttributeSet?) : View(context, attributeSet) {
+    constructor(context: Context) : this(context, null)
 
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val bounds = RectF(150f.dp2pxF, 50f.dp2pxF, 300f.dp2pxF, 200f.dp2pxF)
@@ -34,7 +35,7 @@ class XfermodeView(context: Context?) : View(context) {
     }
 
     override fun onDraw(canvas: Canvas) {
-        //离屏缓冲
+        //离屏缓冲(单独的⼀个绘制 View的区域)
         val count = canvas.saveLayer(bounds, null)
         canvas.drawBitmap(circleBitmap, 150f.dp2pxF, 50f.dp2pxF, paint)
         paint.xfermode = XFERMODE

@@ -14,4 +14,5 @@ object Constants {
     const val SPORT = "Sport"
     const val MULTILINE = "Multiline"
     const val CAMERA = "Camera"
+    const val ANIMATOR = "Animator"
 }

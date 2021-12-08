@@ -5,6 +5,7 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Rect
+import android.util.AttributeSet
 import android.view.View
 import com.release.viewblock.ktx.dp2pxF
 
@@ -19,7 +20,9 @@ private val HIGHLIGHT_COLOR = Color.parseColor("#FF8041")
 private val RING_WIDTH = 20.dp2pxF
 private val RADIUS = 150.dp2pxF
 
-class SportView(context: Context) : View(context) {
+class SportView(context: Context,attributeSet: AttributeSet?) : View(context,attributeSet) {
+    constructor(context: Context) : this(context, null)
+
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         textSize = 100.dp2pxF
         textAlign = Paint.Align.CENTER

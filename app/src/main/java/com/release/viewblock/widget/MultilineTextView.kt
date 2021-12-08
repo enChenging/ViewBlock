@@ -5,6 +5,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.graphics.Paint
+import android.util.AttributeSet
 import android.view.View
 import com.release.viewblock.R
 import com.release.viewblock.ktx.dp2pxF
@@ -18,7 +19,9 @@ import com.release.viewblock.ktx.dp2pxF
 private val IMAGE_PADDING = 50.dp2pxF
 private val IMAGE_SIZE = 150f.dp2pxF
 
-class MultilineTextView(context: Context) : View(context) {
+class MultilineTextView(context: Context,attributeSet: AttributeSet?) : View(context,attributeSet) {
+    constructor(context: Context) : this(context, null)
+
     val text =
         "Donec vel turpis nisl. Phasellus leo leo, accumsan in urna id, scelerisque condimentum nunc. Nunc nunc est, finibus quis porta elementum, ornare quis est. Etiam ligula lectus, dictum ut nibh eget, lacinia facilisis ante. Vivamus rutrum, ex nec vulputate ultrices, leo dolor sollicitudin felis, non rutrum nunc ex quis arcu. Nam ut mi leo. Suspendisse interdum pharetra leo, id rhoncus nunc imperdiet vel. Suspendisse sed viverra magna. Etiam rutrum sollicitudin risus, a mollis est aliquam mattis. Donec a tortor condimentum, condimentum urna non, consectetur odio. Suspendisse luctus, mi vitae porta lobortis, lacus turpis auctor elit, ut sodales nisi libero id dolor. Integer suscipit metus vel felis porttitor varius. Curabitur ac sapien eget nulla venenatis cursus."
 
