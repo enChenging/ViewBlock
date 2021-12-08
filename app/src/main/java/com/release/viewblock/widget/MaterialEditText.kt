@@ -62,9 +62,11 @@ class MaterialEditText(context: Context, attrs: AttributeSet?) : AppCompatEditTe
     init {
         paint.textSize = TEXT_SIZE
         paint.color = Color.RED
-        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.MaterialEditText)
-        userFloatingLable =
-            typedArray.getBoolean(R.styleable.MaterialEditText_userFloatingLable, true)
+//        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.MaterialEditText)
+        val typedArray = context.obtainStyledAttributes(attrs, intArrayOf(R.attr.userFloatingLable))
+//        userFloatingLable =
+//            typedArray.getBoolean(R.styleable.MaterialEditText_userFloatingLable, true)
+        userFloatingLable = typedArray.getBoolean(0, true)
         typedArray.recycle()
     }
 
