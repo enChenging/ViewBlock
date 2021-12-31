@@ -26,6 +26,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         vAnimator.setOnClickListener(this)
         vDrawable.setOnClickListener(this)
         vMaterialEditText.setOnClickListener(this)
+        vMeasure.setOnClickListener(this)
+        vLayout.setOnClickListener(this)
     }
 
     override fun onClick(view: View) {
@@ -50,6 +52,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 jumpAct(Constants.DRAWABLE)
             R.id.vMaterialEditText ->
                 jumpAct(Constants.MATERIAL_EDIT_TEXT)
+            R.id.vMeasure ->
+                jumpAct(Constants.MEASURE)
+            R.id.vLayout ->
+                jumpAct(Constants.LAYOUT)
         }
     }
 

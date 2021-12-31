@@ -156,4 +156,34 @@
         app:layout_constraintTop_toBottomOf="@id/vDrawable"
         app:layout_constraintWidth_percent="0.8" />
 
+    <TextView
+        android:id="@+id/vMeasure"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rect_20dp"
+        android:gravity="center"
+        android:text="View的测量"
+        android:textColor="@color/white"
+        app:layout_constraintHeight_percent="0.05"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/vMaterialEditText"
+        app:layout_constraintWidth_percent="0.8" />
+
+    <TextView
+        android:id="@+id/vLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rect_20dp"
+        android:gravity="center"
+        android:text="自定义Layout"
+        android:textColor="@color/white"
+        app:layout_constraintHeight_percent="0.05"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/vMeasure"
+        app:layout_constraintWidth_percent="0.8" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,7 +10,7 @@ import com.release.viewblock.ktx.dp2pxF
 import java.util.jar.Attributes
 
 /**
- * 圆
+ * 圆(为属性动画使用)
  * @author yancheng
  * @since 2021/12/8
  */

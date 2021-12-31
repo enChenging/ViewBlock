@@ -21,6 +21,7 @@
 
         <activity android:name=".ShowWidgetViewActivity"/>
         <activity android:name=".AnimatorActivity"/>
+        <activity android:name=".LayoutActivity"/>
     </application>
 
 </manifest>

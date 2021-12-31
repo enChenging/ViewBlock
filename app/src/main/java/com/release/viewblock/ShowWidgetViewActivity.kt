@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.release.viewblock.ktx.dp2px
+import com.release.viewblock.ktx.dp2pxF
 import com.release.viewblock.widget.*
 import kotlinx.android.synthetic.main.activity_show_widget_view.*
 
@@ -22,13 +24,19 @@ class ShowWidgetViewActivity : AppCompatActivity() {
             )
         }
     }
+    private val vMeasure by lazy {
+        MeasureView(this).apply {
+            layoutParams = ConstraintLayout.LayoutParams(
+                300.dp2px,
+                200.dp2px
+            )
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_widget_view)
-
-        val key = intent.getStringExtra(Constants.KEY)
-        initView(key)
+        initView(intent.getStringExtra(Constants.KEY))
     }
 
     private fun initView(key: String?) {
@@ -50,9 +58,10 @@ class ShowWidgetViewActivity : AppCompatActivity() {
                 container.addView(CameraView(this))
             Constants.DRAWABLE ->
                 container.addView(DrawableView(this))
-            Constants.MATERIAL_EDIT_TEXT -> {
+            Constants.MATERIAL_EDIT_TEXT ->
                 container.addView(materialEditText)
-            }
+            Constants.MEASURE ->
+                container.addView(vMeasure)
         }
     }
 }
