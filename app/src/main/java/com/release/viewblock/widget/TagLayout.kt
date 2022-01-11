@@ -3,6 +3,7 @@ package com.release.viewblock.widget
 import android.content.Context
 import android.graphics.Rect
 import android.util.AttributeSet
+import android.util.Log
 import android.view.ViewGroup
 import androidx.core.view.children
 import kotlin.math.max
@@ -13,25 +14,26 @@ import kotlin.math.max
  * @since 2021/12/10
  */
 class TagLayout(context: Context, attrs: AttributeSet?) : ViewGroup(context, attrs) {
+
     constructor(context: Context) : this(context, null)
 
     private val childrenBounds = mutableListOf<Rect>()
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        //当前行的 已用宽度
         var widthUsed = 0
+        //每行中最大宽度
+        var lineMaxWidth = 0
+        //当前列的 已用高度
         var heightUsed = 0
-        var lineWidthUsed = 0
+        //每行中最高的高度
         var lineMaxHegith = 0
         val widtSpechMode = MeasureSpec.getMode(widthMeasureSpec)
         val widthSpecSize = MeasureSpec.getSize(widthMeasureSpec)
+
         for ((index, child) in children.withIndex()) {
-            measureChildWithMargins(
-                child,
-                widthMeasureSpec,
-                0,
-                heightMeasureSpec,
-                heightUsed
-            )
+            //widthUsed 填0表示测量全部
+            measureChildWithMargins(child, widthMeasureSpec, 0, heightMeasureSpec, heightUsed)
             /*val layoutParams = child.layoutParams
             var childWidthSpecMode = 0
             var childWidthSpecSize = 0
@@ -63,28 +65,26 @@ class TagLayout(context: Context, attrs: AttributeSet?) : ViewGroup(context, att
                     childWidthSpecSize = layoutParams.width
                 }
             }*/
-            if (widtSpechMode != MeasureSpec.UNSPECIFIED && widthUsed + child.measuredWidth > widthMeasureSpec) {
-                lineWidthUsed = 0
-                heightUsed = 0
+            if (widtSpechMode != MeasureSpec.UNSPECIFIED && widthUsed + child.measuredWidth > widthSpecSize) {
+                widthUsed = 0
                 heightUsed += lineMaxHegith
                 lineMaxHegith = 0
                 measureChildWithMargins(child, widthMeasureSpec, 0, heightMeasureSpec, heightUsed)
             }
-            if (index >= childrenBounds.size) {
+
+            if (index == childrenBounds.size) {
                 childrenBounds.add(Rect())
             }
+
             val childBounds = childrenBounds[index]
-            childBounds.set(
-                widthUsed,
-                heightUsed,
-                widthUsed + child.measuredWidth,
-                heightUsed + child.measuredHeight
-            )
+            childBounds.set(widthUsed, heightUsed, widthUsed + child.measuredWidth, heightUsed + child.measuredHeight)
+
             widthUsed += child.measuredWidth
+            lineMaxWidth = max(lineMaxWidth, widthUsed)
             lineMaxHegith = max(lineMaxHegith, child.measuredHeight)
         }
-        val selfWidth = widthUsed
-        val selfHeight = lineMaxHegith
+        val selfWidth = lineMaxWidth
+        val selfHeight = heightUsed + lineMaxHegith
         setMeasuredDimension(selfWidth, selfHeight)
     }
 

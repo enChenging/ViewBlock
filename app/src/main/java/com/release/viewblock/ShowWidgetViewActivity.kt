@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.release.viewblock.ktx.dp2px
-import com.release.viewblock.ktx.dp2pxF
 import com.release.viewblock.widget.*
 import kotlinx.android.synthetic.main.activity_show_widget_view.*
 
@@ -62,6 +61,8 @@ class ShowWidgetViewActivity : AppCompatActivity() {
                 container.addView(materialEditText)
             Constants.MEASURE ->
                 container.addView(vMeasure)
+            Constants.SCALABLE_IMAGE_VIEW ->
+                container.addView(ScalableImageView(this))
         }
     }
 }

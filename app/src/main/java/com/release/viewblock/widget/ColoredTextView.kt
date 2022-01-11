@@ -5,7 +5,7 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.util.AttributeSet
-import android.widget.TextView
+import androidx.appcompat.widget.AppCompatTextView
 import com.release.viewblock.ktx.dp2px
 import com.release.viewblock.ktx.dp2pxF
 import java.util.*
@@ -25,12 +25,12 @@ private val COLORS = intArrayOf(
     Color.parseColor("#FF5722"),
     Color.parseColor("#795548")
 )
-private val TEXT_SIZE = intArrayOf(16, 22, 28)
+private val TEXT_SIZE = intArrayOf(13, 22, 28)
 private val CORNER_RANDIUS = 4.dp2pxF
 private val X_PADDING = 16.dp2px
 private val Y_PADDING = 8.dp2px
 
-class ColoredTextView(context: Context, attrs: AttributeSet?) : TextView(context, attrs) {
+class ColoredTextView(context: Context, attrs: AttributeSet?) : AppCompatTextView(context, attrs) {
     constructor(context: Context) : this(context, null)
 
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
@@ -53,5 +53,6 @@ class ColoredTextView(context: Context, attrs: AttributeSet?) : TextView(context
             CORNER_RANDIUS,
             paint
         )
+        super.onDraw(canvas)
     }
 }

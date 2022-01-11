@@ -17,5 +17,5 @@ object Constants {
     const val DRAWABLE = "Drawable"
     const val MATERIAL_EDIT_TEXT = "MaterialEditText"
     const val MEASURE = "Measure"
-    const val LAYOUT = "Layout"
+    const val SCALABLE_IMAGE_VIEW = "ScalableImageView"
 }

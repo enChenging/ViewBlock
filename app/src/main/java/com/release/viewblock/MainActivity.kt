@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         vMaterialEditText.setOnClickListener(this)
         vMeasure.setOnClickListener(this)
         vLayout.setOnClickListener(this)
+        vScalableIv.setOnClickListener(this)
     }
 
     override fun onClick(view: View) {
@@ -55,7 +56,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.vMeasure ->
                 jumpAct(Constants.MEASURE)
             R.id.vLayout ->
-                jumpAct(Constants.LAYOUT)
+                startActivity<LayoutActivity>()
+            R.id.vScalableIv ->
+                jumpAct(Constants.SCALABLE_IMAGE_VIEW)
         }
     }
 
