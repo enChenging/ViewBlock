@@ -7,6 +7,7 @@ import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.GestureDetector
 import android.view.MotionEvent
+import android.view.ScaleGestureDetector
 import android.view.View
 import android.widget.OverScroller
 import androidx.core.view.GestureDetectorCompat
@@ -26,8 +27,7 @@ private val IMAGE_SIZE = 300.dp2px
 //额外放缩倍数
 private const val EXTRA_SCALE_FRACTION = 1.5f
 
-class ScalableImageView(context: Context, attrs: AttributeSet?) : View(context, attrs),
-    GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener, Runnable {
+class ScalableImageView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
     constructor(context: Context) : this(context, null)
 
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
@@ -36,29 +36,30 @@ class ScalableImageView(context: Context, attrs: AttributeSet?) : View(context, 
     private var originalOffsetY = 0f
     private var offsetX = 0f
     private var offsetY = 0f
+    private val viewGestureListener = ViewGestureListener()
+    private val gestureDetector = GestureDetectorCompat(context, viewGestureListener)
+    private val viewFlingRunner = ViewFlingRunner()
+    private val viewScaleGestureListener = ViewScaleGestureListener()
+    private val scaleGestureDetector = ScaleGestureDetector(context, viewScaleGestureListener)
 
     //图片内贴边
     private var smallScale = 0f
 
     //图片外贴边
     private var bigScale = 0f
-    private val gestureDetector = GestureDetectorCompat(context, this)
 
-    //    private val gestureDetector = GestureDetectorCompat(context, this).apply {
-//        setOnDoubleTapListener(this@ScalableImageView)
-//    }
+    //双击变大/缩小
     private var big = false
 
-    //放缩比
-    private var scaleFraction = 0f
+    //当前放缩比
+    private var currentScale = 0f
         set(value) {
             field = value
             invalidate()
         }
 
-    private val scaleAnimator: ObjectAnimator by lazy {
-        ObjectAnimator.ofFloat(this, "scaleFraction", 0f, 1f)
-    }
+    //缩放动画
+    private val scaleAnimator = ObjectAnimator.ofFloat(this, "currentScale", smallScale, bigScale)
 
     //计算器 (OverScroller适合做快速滑动,它有初始速度,而Scroller没有初始速度)
     private val scroller = OverScroller(context)
@@ -77,156 +78,165 @@ class ScalableImageView(context: Context, attrs: AttributeSet?) : View(context, 
             smallScale = height / bitmap.height.toFloat()
             bigScale = width / bitmap.width.toFloat() * EXTRA_SCALE_FRACTION
         }
+        currentScale = smallScale
+        scaleAnimator.setFloatValues(smallScale, bigScale)
     }
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-
-        canvas.translate(offsetX, offsetY)
-        val scale = smallScale + (bigScale - smallScale) * scaleFraction
-        canvas.scale(scale, scale, width / 2f, height / 2f)
+        val scaleFraction = (currentScale - smallScale) / (bigScale - smallScale)
+        canvas.translate(offsetX * scaleFraction, offsetY * scaleFraction)
+        canvas.scale(currentScale, currentScale, width / 2f, height / 2f)
         canvas.drawBitmap(bitmap, originalOffsetX, originalOffsetY, paint)
     }
 
+    /**
+     * 边缘修正
+     */
+    private fun fixOffsets() {
+        offsetX = min(offsetX, (bitmap.width * bigScale - width) / 2)
+        offsetX = max(offsetX, -(bitmap.width * bigScale - width) / 2)
+        offsetY = min(offsetY, (bitmap.height * bigScale - height) / 2)
+        offsetY = max(offsetY, -(bitmap.height * bigScale - height) / 2)
+    }
+
+
     override fun onTouchEvent(event: MotionEvent?): Boolean {
-        return gestureDetector.onTouchEvent(event)
-    }
-
-    /**
-     * 按下
-     * @param p0 MotionEvent
-     * @return Boolean 返回true消费事件
-     */
-    override fun onDown(p0: MotionEvent?): Boolean {
+        scaleGestureDetector.onTouchEvent(event)
+        if (!scaleGestureDetector.isInProgress)
+            gestureDetector.onTouchEvent(event)
         return true
     }
 
-    /**
-     * 用户触摸到,而且触摸100毫秒
-     * @param p0 MotionEvent
-     */
-    override fun onShowPress(p0: MotionEvent?) {
+    inner class ViewGestureListener : GestureDetector.SimpleOnGestureListener() {
 
-    }
-
-    /**
-     * 单击 (不支持双击时,单击用这个)
-     * @param p0 MotionEvent
-     * @return Boolean 你是否消费了点击事件 (返回值对我们无作用,是给系统做记录用的)
-     */
-    override fun onSingleTapUp(p0: MotionEvent?): Boolean {
-        return false
-    }
-
-    /**
-     * ActionMove
-     * @param downEvent MotionEvent down事件
-     * @param currentEvent MotionEvent 当前事件
-     * @param distanceX Float 上个事件和这次事件点的距离 (旧位置-新位置)
-     * @param distanceY Float
-     * @return Boolean
-     */
-    override fun onScroll(
-        downEvent: MotionEvent?,
-        currentEvent: MotionEvent?,
-        distanceX: Float,
-        distanceY: Float
-    ): Boolean {
-        if (big) {
-            offsetX -= distanceX
-            offsetX = min(offsetX, (bitmap.width * bigScale - width) / 2)
-            offsetX = max(offsetX, -(bitmap.width * bigScale - width) / 2)
-            offsetY -= distanceY
-            offsetY = min(offsetY, (bitmap.height * bigScale - height) / 2)
-            offsetY = max(offsetY, -(bitmap.height * bigScale - height) / 2)
-            invalidate()
+        /**
+         * 按下
+         * @param p0 MotionEvent
+         * @return Boolean 返回true消费事件
+         */
+        override fun onDown(p0: MotionEvent?): Boolean {
+            return true
         }
-        return false
-    }
 
-    /**
-     * 长按点击
-     * @param e MotionEvent
-     */
-    override fun onLongPress(e: MotionEvent?) {
-
-    }
-
-    /**
-     * 手指快速滑动触发
-     * @param downEvent MotionEvent
-     * @param currentEvent MotionEvent
-     * @param velocityX Float 速率(单位时间内的位移)
-     * @param velocityY Float
-     * @return Boolean
-     */
-    override fun onFling(
-        downEvent: MotionEvent?,
-        currentEvent: MotionEvent?,
-        velocityX: Float,
-        velocityY: Float
-    ): Boolean {
-        if (big) {
-            //startX:起始坐标, startY:起始坐标,velocityX:速度, velocityY
-            //minX:最小值,maxX:最大值, minY:最小值,maxY:最大值,overX:过度滑动,最多可以偏移多少,overY:过度滑动
-            scroller.fling(
-                offsetX.toInt(),
-                offsetY.toInt(),
-                velocityX.toInt(),
-                velocityY.toInt(),
-                (-(bitmap.width * bigScale - width) / 2).toInt(),
-                ((bitmap.width * bigScale - width) / 2).toInt(),
-                (-(bitmap.height * bigScale - height) / 2).toInt(),
-                ((bitmap.height * bigScale - height) / 2).toInt(),
-                20.dp2px, 20.dp2px
-            )
-            //在下一帧调用 (与post区别是,post会立刻调用,而postOnAnimation会在下一帧中调用)
-            ViewCompat.postOnAnimation(this,this)
+        /**
+         * ActionMove
+         * @param downEvent MotionEvent down事件
+         * @param currentEvent MotionEvent 当前事件
+         * @param distanceX Float 上个事件和这次事件点的距离 (旧位置-新位置)
+         * @param distanceY Float
+         * @return Boolean
+         */
+        override fun onScroll(
+            downEvent: MotionEvent?,
+            currentEvent: MotionEvent?,
+            distanceX: Float,
+            distanceY: Float
+        ): Boolean {
+            if (big) {
+                offsetX -= distanceX
+                offsetY -= distanceY
+                fixOffsets()
+                invalidate()
+            }
+            return false
         }
-        return false
-    }
 
-    override fun run() {
-        //是否还在计算中
-        if (scroller.computeScrollOffset()) {
-            offsetX = scroller.currX.toFloat()
-            offsetY = scroller.currY.toFloat()
-            invalidate()
-            ViewCompat.postOnAnimation(this,this)
+        /**
+         * 手指快速滑动触发
+         * @param downEvent MotionEvent
+         * @param currentEvent MotionEvent
+         * @param velocityX Float 速率(单位时间内的位移)
+         * @param velocityY Float
+         * @return Boolean
+         */
+        override fun onFling(
+            downEvent: MotionEvent?,
+            currentEvent: MotionEvent?,
+            velocityX: Float,
+            velocityY: Float
+        ): Boolean {
+            if (big) {
+                //startX:起始坐标, startY:起始坐标,velocityX:速度, velocityY
+                //minX:最小值,maxX:最大值, minY:最小值,maxY:最大值,overX:过度滑动,最多可以偏移多少,overY:过度滑动
+                scroller.fling(
+                    offsetX.toInt(),
+                    offsetY.toInt(),
+                    velocityX.toInt(),
+                    velocityY.toInt(),
+                    (-(bitmap.width * bigScale - width) / 2).toInt(),
+                    ((bitmap.width * bigScale - width) / 2).toInt(),
+                    (-(bitmap.height * bigScale - height) / 2).toInt(),
+                    ((bitmap.height * bigScale - height) / 2).toInt()
+//                    20.dp2px, 20.dp2px
+                )
+                //在下一帧调用 (与post区别是,post会立刻调用,而postOnAnimation会在下一帧中调用)
+                ViewCompat.postOnAnimation(this@ScalableImageView, viewFlingRunner)
+            }
+            return false
+        }
+
+        /**
+         * 双击 (时间间隔300ms:双击,短语40ms不会触发:防止手抖)
+         * @param p0 MotionEvent
+         * @return Boolean
+         */
+        override fun onDoubleTap(p0: MotionEvent): Boolean {
+            big = !big
+            if (big) {
+                //手指双击的偏移值
+                offsetX = (p0.x - width / 2f) * (1 - bigScale / smallScale)
+                offsetY = (p0.y - height / 2f) * (1 - bigScale / smallScale)
+                fixOffsets()
+                scaleAnimator.start()
+            } else {
+                scaleAnimator.reverse()
+            }
+            return true
         }
     }
 
-    /**
-     * 单击 (支持双击时,单击用这个)
-     * @param p0 MotionEvent
-     * @return Boolean
-     */
-    override fun onSingleTapConfirmed(p0: MotionEvent?): Boolean {
-        return false
-    }
+    inner class ViewScaleGestureListener : ScaleGestureDetector.OnScaleGestureListener {
 
-    /**
-     * 双击 (时间间隔300ms:双击,短语40ms不会触发:防止手抖)
-     * @param p0 MotionEvent
-     * @return Boolean
-     */
-    override fun onDoubleTap(p0: MotionEvent?): Boolean {
-        big = !big
-        if (big) {
-            scaleAnimator.start()
-        } else {
-            scaleAnimator.reverse()
+        override fun onScaleBegin(p0: ScaleGestureDetector): Boolean {
+            offsetX = (p0.focusX - width / 2f) * (1 - bigScale / smallScale)
+            offsetY = (p0.focusY - height / 2f) * (1 - bigScale / smallScale)
+            fixOffsets()
+            return true
         }
-        return true
+
+        override fun onScaleEnd(p0: ScaleGestureDetector) {
+        }
+
+        /**
+         *
+         * @param p0 ScaleGestureDetector
+         * @return Boolean true:此刻与上一状态比值  false:此刻与初始状态的比值
+         */
+        override fun onScale(p0: ScaleGestureDetector): Boolean {
+            val tempCurrentScale = currentScale * p0.scaleFactor //0  ->  无穷
+            return if (tempCurrentScale < smallScale || tempCurrentScale > bigScale) {
+                //上一状态的值进行保存
+                false
+            } else {
+                currentScale *= p0.scaleFactor
+                true
+            }
+//            currentScale = currentScale.coerceAtLeast(smallScale).coerceAtMost(bigScale)
+        }
+
     }
 
-    /**
-     * 双击按下后的各种事件都会收到
-     * @param p0 MotionEvent
-     * @return Boolean
-     */
-    override fun onDoubleTapEvent(p0: MotionEvent?): Boolean {
-        return false
+    inner class ViewFlingRunner : Runnable {
+        override fun run() {
+            //是否还在计算中
+            if (scroller.computeScrollOffset()) {
+                offsetX = scroller.currX.toFloat()
+                offsetY = scroller.currY.toFloat()
+                invalidate()
+                ViewCompat.postOnAnimation(this@ScalableImageView, this)
+            }
+        }
     }
 
 
