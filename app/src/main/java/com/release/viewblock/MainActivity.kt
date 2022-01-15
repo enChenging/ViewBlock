@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         vMeasure.setOnClickListener(this)
         vLayout.setOnClickListener(this)
         vScalableIv.setOnClickListener(this)
+        vMultiTouch.setOnClickListener(this)
     }
 
     override fun onClick(view: View) {
@@ -59,6 +60,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 startActivity<LayoutActivity>()
             R.id.vScalableIv ->
                 jumpAct(Constants.SCALABLE_IMAGE_VIEW)
+            R.id.vMultiTouch ->
+                jumpAct(Constants.MULTI_TOUCH)
         }
     }
 

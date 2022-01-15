@@ -18,4 +18,5 @@ object Constants {
     const val MATERIAL_EDIT_TEXT = "MaterialEditText"
     const val MEASURE = "Measure"
     const val SCALABLE_IMAGE_VIEW = "ScalableImageView"
+    const val MULTI_TOUCH = "MultiTouch"
 }

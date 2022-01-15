@@ -9,7 +9,7 @@ import com.release.viewblock.widget.*
 import kotlinx.android.synthetic.main.activity_show_widget_view.*
 
 /**
- * 饼图
+ * 展示各种自定义View视图
  * @author yancheng
  * @since 2021/12/6
  */
@@ -63,6 +63,8 @@ class ShowWidgetViewActivity : AppCompatActivity() {
                 container.addView(vMeasure)
             Constants.SCALABLE_IMAGE_VIEW ->
                 container.addView(ScalableImageView(this))
+            Constants.MULTI_TOUCH ->
+                container.addView(MultiTouchView(this))
         }
     }
 }
