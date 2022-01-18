@@ -10,11 +10,11 @@ import com.release.viewblock.ktx.dp2px
 import com.release.viewblock.ktx.getAvatar
 
 /**
- * 多点触摸
+ * 多点触摸-接力型
  * @author yancheng
  * @since 2022/1/13
  */
-class MultiTouchView(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
+class MultiTouchView1(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
     constructor(context: Context) : this(context, null)
 
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
@@ -51,6 +51,19 @@ class MultiTouchView(context: Context?, attrs: AttributeSet?) : View(context, at
             }
             MotionEvent.ACTION_POINTER_UP -> {
                 val actionIndex = event.actionIndex
+                val pointerId = event.getPointerId(actionIndex)
+                if (pointerId == trackingPointerId) {
+                    val newIndex = if (actionIndex == event.pointerCount - 1) {
+                        event.pointerCount - 2
+                    } else {
+                        event.pointerCount - 1
+                    }
+                    trackingPointerId = event.getPointerId(newIndex)
+                    downX = event.getX(newIndex)
+                    downY = event.getY(newIndex)
+                    originalOffsetX = offsetX
+                    originalOffsetY = offsetY
+                }
             }
             MotionEvent.ACTION_MOVE -> {
                 val index = event.findPointerIndex(trackingPointerId)

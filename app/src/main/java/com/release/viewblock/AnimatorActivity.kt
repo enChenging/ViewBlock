@@ -19,6 +19,7 @@ class AnimatorActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_animator)
+        supportActionBar?.title = intent.getStringExtra(Constants.TITLE)
 
         //ViewPropertyAnimator 使用
 //        vCircleView.animate()

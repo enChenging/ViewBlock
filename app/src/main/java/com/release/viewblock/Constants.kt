@@ -7,6 +7,8 @@ package com.release.viewblock
  */
 object Constants {
     const val KEY = "viewKey"
+    const val IS_VIEW_GROUP = "isViewGroup"
+    const val TITLE = "title"
     const val DASH_BOARD = "DashBoard"
     const val PIE_CHART = "PieChart"
     const val AVATAR = "Avatar"
@@ -17,6 +19,12 @@ object Constants {
     const val DRAWABLE = "Drawable"
     const val MATERIAL_EDIT_TEXT = "MaterialEditText"
     const val MEASURE = "Measure"
+    const val LAYOUT = "vLayout"
     const val SCALABLE_IMAGE_VIEW = "ScalableImageView"
-    const val MULTI_TOUCH = "MultiTouch"
+    const val MULTI_TOUCH_1 = "MultiTouch1"
+    const val MULTI_TOUCH_2 = "MultiTouch2"
+    const val MULTI_TOUCH_3 = "MultiTouch3"
+    const val TWO_PAGER = "TwoPager"
+    const val DRAG_HELP = "DragHelp"
+    const val DRAG_LISTENER = "DragListener"
 }
