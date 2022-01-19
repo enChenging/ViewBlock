@@ -1,8 +1,8 @@
 ##  介绍
 
-**Android 自定义View**
+**Android 自定义View所涉及的内容**
 
-## [PorterDuff.Mode官方介绍地址](https://developer.android.com/reference/android/graphics/PorterDuff.Mode)
+## 补充:[PorterDuff.Mode官方介绍地址](https://developer.android.com/reference/android/graphics/PorterDuff.Mode)
  
 
 <div align="left" >
