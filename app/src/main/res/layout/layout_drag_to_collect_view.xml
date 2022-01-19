@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.release.viewblock.widget.DragToCollectLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/vAvatarIv"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:contentDescription="Avatar"
+        android:src="@drawable/avatar"
+        app:layout_constraintEnd_toStartOf="@id/vFrameIv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/vFrameIv"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:contentDescription="Frame"
+        android:src="@drawable/frame"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/vAvatarIv"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/vCollectorLayout"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@color/purple_200"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</com.release.viewblock.widget.DragToCollectLayout>

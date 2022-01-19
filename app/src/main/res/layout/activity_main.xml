@@ -6,297 +6,263 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/vDashBoard"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginStart="50dp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="50dp"
             android:background="@drawable/rect_20dp"
             android:gravity="center"
             android:text="仪表盘"
-            android:textColor="@color/white"
-            app:layout_constraintHeight_percent="0.05"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintWidth_percent="0.8" />
+            android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/vPieChart"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginStart="50dp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="50dp"
             android:background="@drawable/rect_20dp"
             android:gravity="center"
             android:text="饼图"
-            android:textColor="@color/white"
-            app:layout_constraintHeight_percent="0.05"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/vDashBoard"
-            app:layout_constraintWidth_percent="0.8" />
+            android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/vAvatar"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginStart="50dp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="50dp"
             android:background="@drawable/rect_20dp"
             android:gravity="center"
             android:text="头像"
-            android:textColor="@color/white"
-            app:layout_constraintHeight_percent="0.05"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/vPieChart"
-            app:layout_constraintWidth_percent="0.8" />
+            android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/vXfermode"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginStart="50dp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="50dp"
             android:background="@drawable/rect_20dp"
             android:gravity="center"
             android:text="Xfermode使用"
-            android:textColor="@color/white"
-            app:layout_constraintHeight_percent="0.05"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/vAvatar"
-            app:layout_constraintWidth_percent="0.8" />
+            android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/vSport"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
             android:layout_marginTop="10dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
             android:background="@drawable/rect_20dp"
             android:gravity="center"
             android:text="运动圆环"
-            android:textColor="@color/white"
-            app:layout_constraintHeight_percent="0.05"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/vXfermode"
-            app:layout_constraintWidth_percent="0.8" />
+            android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/vMultiline"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginStart="50dp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="50dp"
             android:background="@drawable/rect_20dp"
             android:gravity="center"
             android:text="多行文字"
-            android:textColor="@color/white"
-            app:layout_constraintHeight_percent="0.05"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/vSport"
-            app:layout_constraintWidth_percent="0.8" />
+            android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/vCamera"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginStart="50dp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="50dp"
             android:background="@drawable/rect_20dp"
             android:gravity="center"
             android:text="范围裁切和几何变换"
-            android:textColor="@color/white"
-            app:layout_constraintHeight_percent="0.05"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/vMultiline"
-            app:layout_constraintWidth_percent="0.8" />
+            android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/vAnimator"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginStart="50dp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="50dp"
             android:background="@drawable/rect_20dp"
             android:gravity="center"
             android:text="属性动画"
-            android:textColor="@color/white"
-            app:layout_constraintHeight_percent="0.05"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/vCamera"
-            app:layout_constraintWidth_percent="0.8" />
+            android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/vDrawable"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginStart="50dp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="50dp"
             android:background="@drawable/rect_20dp"
             android:gravity="center"
             android:text="自定义Drawable"
-            android:textColor="@color/white"
-            app:layout_constraintHeight_percent="0.05"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/vAnimator"
-            app:layout_constraintWidth_percent="0.8" />
+            android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/vMaterialEditText"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginStart="50dp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="50dp"
             android:background="@drawable/rect_20dp"
             android:gravity="center"
             android:text="MaterialEditText"
-            android:textColor="@color/white"
-            app:layout_constraintHeight_percent="0.05"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/vDrawable"
-            app:layout_constraintWidth_percent="0.8" />
+            android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/vMeasure"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginStart="50dp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="50dp"
             android:background="@drawable/rect_20dp"
             android:gravity="center"
             android:text="View的测量"
-            android:textColor="@color/white"
-            app:layout_constraintHeight_percent="0.05"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/vMaterialEditText"
-            app:layout_constraintWidth_percent="0.8" />
+            android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/vLayout"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginStart="50dp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="50dp"
             android:background="@drawable/rect_20dp"
             android:gravity="center"
             android:text="自定义Layout"
-            android:textColor="@color/white"
-            app:layout_constraintHeight_percent="0.05"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/vMeasure"
-            app:layout_constraintWidth_percent="0.8" />
+            android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/vScalableIv"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
             android:layout_marginTop="10dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
             android:background="@drawable/rect_20dp"
             android:gravity="center"
             android:text="可缩放的ImageView"
-            android:textColor="@color/white"
-            app:layout_constraintHeight_percent="0.05"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/vLayout"
-            app:layout_constraintWidth_percent="0.8" />
+            android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/vMultiTouch1"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
             android:layout_marginTop="10dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
             android:background="@drawable/rect_20dp"
             android:gravity="center"
             android:text="多点触摸-接力型"
-            android:textColor="@color/white"
-            app:layout_constraintHeight_percent="0.05"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/vScalableIv"
-            app:layout_constraintWidth_percent="0.8" />
+            android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/vMultiTouch2"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginStart="50dp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="50dp"
             android:background="@drawable/rect_20dp"
             android:gravity="center"
             android:text="多点触摸-协作型"
-            android:textColor="@color/white"
-            app:layout_constraintHeight_percent="0.05"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/vMultiTouch1"
-            app:layout_constraintWidth_percent="0.8" />
+            android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/vMultiTouch3"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginStart="50dp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="50dp"
             android:background="@drawable/rect_20dp"
             android:gravity="center"
             android:text="多点触摸-互不影响型"
-            android:textColor="@color/white"
-            app:layout_constraintHeight_percent="0.05"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/vMultiTouch2"
-            app:layout_constraintWidth_percent="0.8" />
+            android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/vTwoPager"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginStart="50dp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="50dp"
             android:background="@drawable/rect_20dp"
             android:gravity="center"
             android:text="触摸反馈-TwoPager"
-            android:textColor="@color/white"
-            app:layout_constraintHeight_percent="0.05"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/vMultiTouch3"
-            app:layout_constraintWidth_percent="0.8" />
+            android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/vDragHelp"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginStart="50dp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="50dp"
             android:background="@drawable/rect_20dp"
             android:gravity="center"
             android:text="触摸反馈-拖拽"
-            android:textColor="@color/white"
-            app:layout_constraintHeight_percent="0.05"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/vTwoPager"
-            app:layout_constraintWidth_percent="0.8" />
+            android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/vDragListener"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginStart="50dp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="50dp"
             android:background="@drawable/rect_20dp"
             android:gravity="center"
             android:text="触摸反馈-拖拽2"
-            android:textColor="@color/white"
-            app:layout_constraintHeight_percent="0.05"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/vDragHelp"
-            app:layout_constraintWidth_percent="0.8" />
+            android:textColor="@color/white" />
 
+        <TextView
+            android:id="@+id/vDragToCollect"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="50dp"
+            android:background="@drawable/rect_20dp"
+            android:gravity="center"
+            android:text="触摸反馈-拖拽3"
+            android:textColor="@color/white" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/vDragUpDown"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="50dp"
+            android:background="@drawable/rect_20dp"
+            android:gravity="center"
+            android:text="触摸反馈-拖拽4"
+            android:textColor="@color/white" />
 
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 </androidx.core.widget.NestedScrollView>

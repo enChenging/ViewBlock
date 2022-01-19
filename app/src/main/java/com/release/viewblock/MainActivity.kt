@@ -37,6 +37,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         vTwoPager.setOnClickListener(this)
         vDragHelp.setOnClickListener(this)
         vDragListener.setOnClickListener(this)
+        vDragToCollect.setOnClickListener(this)
+        vDragUpDown.setOnClickListener(this)
     }
 
     override fun onClick(view: View) {
@@ -81,6 +83,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 jumpAct(Constants.DRAG_HELP, title, "1")
             R.id.vDragListener ->
                 jumpAct(Constants.DRAG_LISTENER, title, "1")
+            R.id.vDragToCollect ->
+                jumpAct(Constants.DRAG_TO_COLLECT, title, "1")
+            R.id.vDragUpDown ->
+                jumpAct(Constants.DRAG_UP_DOWN, title, "1")
         }
     }
 

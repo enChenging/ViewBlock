@@ -27,4 +27,6 @@ object Constants {
     const val TWO_PAGER = "TwoPager"
     const val DRAG_HELP = "DragHelp"
     const val DRAG_LISTENER = "DragListener"
+    const val DRAG_TO_COLLECT = "DragToCollect"
+    const val DRAG_UP_DOWN = "DragUpDown"
 }

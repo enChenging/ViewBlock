@@ -85,6 +85,10 @@ class ShowWidgetViewActivity : AppCompatActivity() {
                     setContentView(R.layout.layout_drag_help_grid_view)
                 Constants.DRAG_LISTENER ->
                     setContentView(R.layout.layout_drag_listener_grid_view)
+                Constants.DRAG_TO_COLLECT ->
+                    setContentView(R.layout.layout_drag_to_collect_view)
+                Constants.DRAG_UP_DOWN ->
+                    setContentView(R.layout.layout_drag_up_down_view)
             }
         }
         supportActionBar?.title = title
