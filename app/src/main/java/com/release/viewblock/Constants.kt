@@ -29,4 +29,5 @@ object Constants {
     const val DRAG_LISTENER = "DragListener"
     const val DRAG_TO_COLLECT = "DragToCollect"
     const val DRAG_UP_DOWN = "DragUpDown"
+    const val CIRCLE_MENU = "circleMenu"
 }

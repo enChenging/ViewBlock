@@ -1,12 +1,17 @@
 package com.release.viewblock
 
 import android.os.Bundle
+import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.release.viewblock.ktx.dp2px
 import com.release.viewblock.widget.*
 import kotlinx.android.synthetic.main.activity_show_widget_view.*
+import kotlinx.android.synthetic.main.layout_circle_menu.*
+
+
 
 /**
  * 展示各种自定义View视图
@@ -31,6 +36,19 @@ class ShowWidgetViewActivity : AppCompatActivity() {
             )
         }
     }
+
+    private val mItemTexts = arrayOf(
+        "安全中心 ", "特色服务", "投资理财",
+        "转账汇款", "我的账户", "信用卡"
+    )
+    private val mItemImgs = intArrayOf(
+        R.drawable.home_mbank_1_normal,
+        R.drawable.home_mbank_2_normal,
+        R.drawable.home_mbank_3_normal,
+        R.drawable.home_mbank_4_normal,
+        R.drawable.home_mbank_5_normal,
+        R.drawable.home_mbank_6_normal
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -89,6 +107,20 @@ class ShowWidgetViewActivity : AppCompatActivity() {
                     setContentView(R.layout.layout_drag_to_collect_view)
                 Constants.DRAG_UP_DOWN ->
                     setContentView(R.layout.layout_drag_up_down_view)
+                Constants.CIRCLE_MENU ->{
+                    setContentView(R.layout.layout_circle_menu)
+                    id_menulayout.setMenuItemIconsAndTexts(mItemImgs,mItemTexts)
+                    id_menulayout.setOnMenuItemClickListener(object:CircleMenuLayout.OnMenuItemClickListener{
+                        override fun itemClick(view: View?, pos: Int) {
+                            Toast.makeText(this@ShowWidgetViewActivity, mItemTexts[pos], Toast.LENGTH_SHORT).show()
+                        }
+
+                        override fun itemCenterClick(view: View?) {
+                            Toast.makeText(this@ShowWidgetViewActivity, "itemCenterClick", Toast.LENGTH_SHORT).show()
+                        }
+
+                    })
+                }
             }
         }
         supportActionBar?.title = title
